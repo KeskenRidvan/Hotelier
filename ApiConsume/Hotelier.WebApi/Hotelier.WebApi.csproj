@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Hotelier.BusinessLayer\Hotelier.BusinessLayer.csproj" />
     <ProjectReference Include="..\Hotelier.DataAccessLayer\Hotelier.DataAccessLayer.csproj" />
     <ProjectReference Include="..\Hotelier.DtoLayer\Hotelier.DtoLayer.csproj" />
