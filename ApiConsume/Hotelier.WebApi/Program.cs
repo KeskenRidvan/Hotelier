@@ -15,6 +15,14 @@ public class Program
 		builder.Services.AddDataAccessServices(builder.Configuration);
 		builder.Services.AddBusinessServices();
 
+		builder.Services.AddCors(opt =>
+		{
+			opt.AddPolicy("HotelierApiCors", opt =>
+			{
+				opt.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+			});
+		});
+
 		builder.Services.AddControllers();
 		// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 		builder.Services.AddEndpointsApiExplorer();
@@ -31,6 +39,7 @@ public class Program
 
 		app.UseHttpsRedirection();
 
+		app.UseCors("HotelierApiCors");
 		app.UseAuthorization();
 
 
