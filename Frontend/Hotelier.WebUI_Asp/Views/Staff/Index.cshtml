@@ -1,4 +1,4 @@
-﻿@model List<Hotelier.WebUI_Asp.Models.Staffs.StaffViewModel>
+﻿@model List<Hotelier.WebUI_Asp.Models.Staffs.ViewModel>
 @{
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -26,4 +26,4 @@
 	}
 </table>
 
-<a href="#" class="btn mb-1 btn-rounded btn-outline-info">Yeni Personel Girisi</a>
+<a asp-controller="Staff" asp-action="Add" class="btn mb-1 btn-rounded btn-outline-info">Yeni Personel Girisi</a>

@@ -1,6 +1,6 @@
 ﻿namespace Hotelier.WebUI_Asp.Models.Staffs;
 
-public class StaffViewModel
+public class ViewModel
 {
 	public int StaffID { get; set; }
 	public string Name { get; set; }
