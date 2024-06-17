@@ -1,0 +1,26 @@
+﻿@model Hotelier.WebUI_Asp.Models.Testimonials.AddViewModel
+
+@{
+	ViewData["Title"] = "Add";
+	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+	<label>Referans Adi</label>
+	<input type="text" asp-for="Name" class="form-control" />
+	<br />
+
+	<label>Referans Unvani</label>
+	<input type="text" asp-for="Title" class="form-control" />
+	<br />
+
+	<label>Referans Aciklamasi</label>
+	<input type="text" asp-for="Description" class="form-control" />
+	<br />
+
+	<label>Referans Resmi</label>
+	<input type="text" asp-for="Image" class="form-control" />
+	<br />
+
+	<button class="btn btn-primary">Referansi Ekle</button>
+</form>
