@@ -47,4 +47,15 @@ public class StaffController : Controller
 
 		return RedirectToAction("Index");
 	}
+
+	public async Task<IActionResult> Delete(int id)
+	{
+		var client = _httpClientFactory.CreateClient();
+		var responseMessage = await client.DeleteAsync($"https://localhost:7094/api/staffs/{id}");
+
+		if (!responseMessage.IsSuccessStatusCode)
+			return View();
+
+		return RedirectToAction("Index");
+	}
 }
