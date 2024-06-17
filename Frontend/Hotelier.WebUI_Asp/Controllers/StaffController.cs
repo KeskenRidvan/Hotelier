@@ -58,4 +58,34 @@ public class StaffController : Controller
 
 		return RedirectToAction("Index");
 	}
+
+	[HttpGet]
+	public async Task<IActionResult> Update(int id)
+	{
+		var client = _httpClientFactory.CreateClient();
+		var responseMessage = await client.GetAsync($"https://localhost:7094/api/staffs/{id}");
+
+		if (!responseMessage.IsSuccessStatusCode)
+			return View();
+
+		var jsonData = await responseMessage.Content.ReadAsStringAsync();
+		var values = JsonConvert.DeserializeObject<UpdateViewModel>(jsonData);
+		return View(values);
+	}
+
+	[HttpPost]
+	public async Task<IActionResult> Update(int id, UpdateViewModel model)
+	{
+		var client = _httpClientFactory.CreateClient();
+		var jsonData = JsonConvert.SerializeObject(model);
+
+		StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+		var responseMessage = await client.PutAsync($"https://localhost:7094/api/staffs/{id}", stringContent);
+
+		if (!responseMessage.IsSuccessStatusCode)
+			return View();
+
+		return RedirectToAction("Index");
+	}
 }

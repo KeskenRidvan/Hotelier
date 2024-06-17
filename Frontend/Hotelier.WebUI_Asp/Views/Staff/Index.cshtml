@@ -20,7 +20,7 @@
 			<td>@item.Name</td>
 			<td>@item.Title</td>
 			<td><a asp-controller="Staff" asp-action="Delete" asp-route-id="@item.StaffID" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
-			<td><a href="#" class="btn mb-1 btn-rounded btn-outline-success">Guncelle</a></td>
+			<td><a asp-controller="Staff" asp-action="Update" asp-route-id="@item.StaffID" class="btn mb-1 btn-rounded btn-outline-success">Guncelle</a></td>
 			<td><a href="#" class="btn mb-1 btn-rounded btn-outline-dark">Detaylar</a></td>
 		</tr>
 	}
