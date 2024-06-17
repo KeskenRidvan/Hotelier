@@ -1,5 +1,5 @@
 ﻿using Hotelier.BusinessLayer.Abstracts;
-using Hotelier.EntityLayer.Concretes;
+using Hotelier.DtoLayer.Testimonials;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotelier.WebApi.Controllers;
@@ -30,24 +30,25 @@ public class TestimonialsController : Controller
 	}
 
 	[HttpPost]
-	public IActionResult Add([FromBody] Testimonial testimonial)
+	public IActionResult Add([FromBody] TestimonialAddDto testimonialAddDto)
 	{
-		_testimonialService.Insert(testimonial);
+		_testimonialService.Insert(testimonialAddDto);
 		return Ok();
 	}
 
 	[HttpDelete("{id}")]
 	public IActionResult Delete([FromRoute] int id)
 	{
-		var response = _testimonialService.GetById(id);
-		_testimonialService.Delete(response);
+		_testimonialService.Delete(id);
 		return Ok();
 	}
 
 	[HttpPut("{id}")]
-	public IActionResult Update([FromRoute] int id, [FromBody] Testimonial testimonial)
+	public IActionResult Update(
+		[FromRoute] int id,
+		[FromBody] TestimonialUpdateDto testimonialUpdateDto)
 	{
-		_testimonialService.Update(testimonial);
+		_testimonialService.Update(testimonialUpdateDto);
 		return Ok();
 	}
 }

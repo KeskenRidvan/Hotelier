@@ -1,4 +1,5 @@
 ﻿using Hotelier.DtoLayer.Staffs;
+using Hotelier.WebUI_Asp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -16,7 +17,7 @@ public class StaffController : Controller
 	public async Task<IActionResult> Index()
 	{
 		var client = _httpClientFactory.CreateClient();
-		var responseMessage = await client.GetAsync("https://localhost:7094/api/staffs");
+		var responseMessage = await client.GetAsync($"{Constants.BaseUrl}/staffs");
 
 		if (!responseMessage.IsSuccessStatusCode)
 			return View();
@@ -39,7 +40,7 @@ public class StaffController : Controller
 
 		StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-		var responseMessage = await client.PostAsync("https://localhost:7094/api/staffs", stringContent);
+		var responseMessage = await client.PostAsync($"{Constants.BaseUrl}/staffs", stringContent);
 
 		if (!responseMessage.IsSuccessStatusCode)
 			return View();
@@ -50,7 +51,7 @@ public class StaffController : Controller
 	public async Task<IActionResult> Delete(int id)
 	{
 		var client = _httpClientFactory.CreateClient();
-		var responseMessage = await client.DeleteAsync($"https://localhost:7094/api/staffs/{id}");
+		var responseMessage = await client.DeleteAsync($"{Constants.BaseUrl}/staffs/{id}");
 
 		if (!responseMessage.IsSuccessStatusCode)
 			return View();
@@ -61,7 +62,7 @@ public class StaffController : Controller
 	public async Task<IActionResult> Update(int id)
 	{
 		var client = _httpClientFactory.CreateClient();
-		var responseMessage = await client.GetAsync($"https://localhost:7094/api/staffs/{id}");
+		var responseMessage = await client.GetAsync($"{Constants.BaseUrl}/staffs/{id}");
 
 		if (!responseMessage.IsSuccessStatusCode)
 			return View();
@@ -79,7 +80,7 @@ public class StaffController : Controller
 
 		StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-		var responseMessage = await client.PutAsync($"https://localhost:7094/api/staffs/{id}", stringContent);
+		var responseMessage = await client.PutAsync($"{Constants.BaseUrl}/staffs/{id}", stringContent);
 
 		if (!responseMessage.IsSuccessStatusCode)
 			return View();

@@ -1,6 +1,6 @@
-﻿namespace Hotelier.WebUI_Asp.Models.Testimonials;
+﻿namespace Hotelier.DtoLayer.Testimonials;
 
-public class UpdateViewModel
+public class TestimonialGetDto
 {
 	public int TestimonialID { get; set; }
 	public string Name { get; set; }
