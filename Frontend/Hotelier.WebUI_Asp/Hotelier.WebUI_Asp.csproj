@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApiConsume\Hotelier.DtoLayer\Hotelier.DtoLayer.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-﻿using Hotelier.WebUI_Asp.Models.Staffs;
+﻿using Hotelier.DtoLayer.Staffs;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -22,21 +22,20 @@ public class StaffController : Controller
 			return View();
 
 		var jsonData = await responseMessage.Content.ReadAsStringAsync();
-		var values = JsonConvert.DeserializeObject<List<ViewModel>>(jsonData);
+		var values = JsonConvert.DeserializeObject<List<StaffGetDto>>(jsonData);
 		return View(values);
 	}
 
-	[HttpGet]
 	public IActionResult Add()
 	{
 		return View();
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> Add(AddViewModel model)
+	public async Task<IActionResult> Add(StaffAddDto dto)
 	{
 		var client = _httpClientFactory.CreateClient();
-		var jsonData = JsonConvert.SerializeObject(model);
+		var jsonData = JsonConvert.SerializeObject(dto);
 
 		StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
@@ -59,7 +58,6 @@ public class StaffController : Controller
 		return RedirectToAction("Index");
 	}
 
-	[HttpGet]
 	public async Task<IActionResult> Update(int id)
 	{
 		var client = _httpClientFactory.CreateClient();
@@ -69,15 +67,15 @@ public class StaffController : Controller
 			return View();
 
 		var jsonData = await responseMessage.Content.ReadAsStringAsync();
-		var values = JsonConvert.DeserializeObject<UpdateViewModel>(jsonData);
+		var values = JsonConvert.DeserializeObject<StaffUpdateDto>(jsonData);
 		return View(values);
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> Update(int id, UpdateViewModel model)
+	public async Task<IActionResult> Update(int id, StaffUpdateDto dto)
 	{
 		var client = _httpClientFactory.CreateClient();
-		var jsonData = JsonConvert.SerializeObject(model);
+		var jsonData = JsonConvert.SerializeObject(dto);
 
 		StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 

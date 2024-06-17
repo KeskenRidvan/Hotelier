@@ -10,4 +10,11 @@
     <ProjectReference Include="..\Hotelier.EntityLayer\Hotelier.EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Rooms\" />
+    <Folder Include="Subscribes\" />
+    <Folder Include="Testimonials\" />
+  </ItemGroup>
+
 </Project>

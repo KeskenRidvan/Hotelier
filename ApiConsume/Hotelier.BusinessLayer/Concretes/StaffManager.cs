@@ -1,5 +1,7 @@
-﻿using Hotelier.BusinessLayer.Abstracts;
+﻿using AutoMapper;
+using Hotelier.BusinessLayer.Abstracts;
 using Hotelier.DataAccessLayer.Repositories.Abstracts;
+using Hotelier.DtoLayer.Staffs;
 using Hotelier.EntityLayer.Concretes;
 
 namespace Hotelier.BusinessLayer.Concretes;
@@ -7,34 +9,54 @@ namespace Hotelier.BusinessLayer.Concretes;
 public class StaffManager : IStaffService
 {
 	private readonly IStaffDal _staffDal;
+	private readonly IMapper _mapper;
 
-	public StaffManager(IStaffDal staffDal)
+	public StaffManager(
+		IStaffDal staffDal,
+		IMapper mapper)
 	{
 		_staffDal = staffDal;
+		_mapper = mapper;
 	}
 
-	public void Delete(Staff staff)
+	public void Delete(int staffId)
 	{
-		_staffDal.Delete(staff);
+		var deletedStaff = _staffDal.GetById(staffId);
+		_staffDal.Delete(deletedStaff);
 	}
 
-	public Staff GetById(int staffId)
+	public StaffGetDto GetById(int staffId)
 	{
-		return _staffDal.GetById(staffId);
+		Staff staff =
+			_staffDal.GetById(staffId);
+
+		StaffGetDto response =
+			_mapper.Map<StaffGetDto>(staff);
+		return response;
 	}
 
-	public List<Staff> GetList()
+	public List<StaffGetDto> GetList()
 	{
-		return _staffDal.GetList();
+		List<Staff> staffs =
+			_staffDal.GetList();
+
+		List<StaffGetDto> response =
+			_mapper.Map<List<StaffGetDto>>(staffs);
+		return response;
 	}
 
-	public void Insert(Staff staff)
+	public void Insert(StaffAddDto staffAddDto)
 	{
+		Staff staff =
+			_mapper.Map<Staff>(staffAddDto);
 		_staffDal.Insert(staff);
 	}
 
-	public void Update(Staff staff)
+	public void Update(StaffUpdateDto staffUpdateDto)
 	{
+		Staff staff =
+		   _mapper.Map<Staff>(staffUpdateDto);
+
 		_staffDal.Update(staff);
 	}
 }

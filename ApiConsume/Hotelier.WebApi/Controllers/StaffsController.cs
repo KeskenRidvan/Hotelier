@@ -1,5 +1,5 @@
 ﻿using Hotelier.BusinessLayer.Abstracts;
-using Hotelier.EntityLayer.Concretes;
+using Hotelier.DtoLayer.Staffs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotelier.WebApi.Controllers;
@@ -30,24 +30,25 @@ public class StaffsController : Controller
 	}
 
 	[HttpPost]
-	public IActionResult Add([FromBody] Staff staff)
+	public IActionResult Add([FromBody] StaffAddDto staffAddDto)
 	{
-		_staffService.Insert(staff);
+		_staffService.Insert(staffAddDto);
 		return Ok();
 	}
 
 	[HttpDelete("{id}")]
 	public IActionResult Delete([FromRoute] int id)
 	{
-		var response = _staffService.GetById(id);
-		_staffService.Delete(response);
+		_staffService.Delete(id);
 		return Ok();
 	}
 
 	[HttpPut("{id}")]
-	public IActionResult Update([FromRoute] int id, [FromBody] Staff staff)
+	public IActionResult Update(
+		[FromRoute] int id,
+		[FromBody] StaffUpdateDto staffUpdateDto)
 	{
-		_staffService.Update(staff);
+		_staffService.Update(staffUpdateDto);
 		return Ok();
 	}
 }

@@ -1,12 +1,12 @@
-﻿using Hotelier.EntityLayer.Concretes;
+﻿using Hotelier.DtoLayer.Staffs;
 
 namespace Hotelier.BusinessLayer.Abstracts;
 
 public interface IStaffService
 {
-	void Insert(Staff staff);
-	void Delete(Staff staff);
-	void Update(Staff staff);
-	List<Staff> GetList();
-	Staff GetById(int staffId);
+	void Insert(StaffAddDto staffAddDto);
+	void Delete(int staffId);
+	void Update(StaffUpdateDto staffUpdateDto);
+	List<StaffGetDto> GetList();
+	StaffGetDto GetById(int staffId);
 }

@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Hotelier.DataAccessLayer\Hotelier.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Hotelier.DtoLayer\Hotelier.DtoLayer.csproj" />
     <ProjectReference Include="..\Hotelier.EntityLayer\Hotelier.EntityLayer.csproj" />
   </ItemGroup>
 
