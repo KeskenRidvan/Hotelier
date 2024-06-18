@@ -1,0 +1,14 @@
+﻿@model SubscribeAddDto
+
+@{
+	ViewData["Title"] = "Add";
+	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+	<label>Abone Maili</label>
+	<input type="text" asp-for="Mail" class="form-control" />
+	<br />
+
+	<button class="btn btn-primary">Abone Ekle</button>
+</form>

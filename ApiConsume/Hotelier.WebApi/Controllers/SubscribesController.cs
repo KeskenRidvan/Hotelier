@@ -1,5 +1,5 @@
 ﻿using Hotelier.BusinessLayer.Abstracts;
-using Hotelier.EntityLayer.Concretes;
+using Hotelier.DtoLayer.Subscribes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotelier.WebApi.Controllers;
@@ -30,24 +30,25 @@ public class SubscribesController : Controller
 	}
 
 	[HttpPost]
-	public IActionResult Add([FromBody] Subscribe subscribe)
+	public IActionResult Add([FromBody] SubscribeAddDto subscribeAddDto)
 	{
-		_subscribeService.Insert(subscribe);
+		_subscribeService.Insert(subscribeAddDto);
 		return Ok();
 	}
 
 	[HttpDelete("{id}")]
 	public IActionResult Delete([FromRoute] int id)
 	{
-		var response = _subscribeService.GetById(id);
-		_subscribeService.Delete(response);
+		_subscribeService.Delete(id);
 		return Ok();
 	}
 
 	[HttpPut("{id}")]
-	public IActionResult Update([FromRoute] int id, [FromBody] Subscribe subscribe)
+	public IActionResult Update(
+		[FromRoute] int id,
+		[FromBody] SubscribeUpdateDto subscribeUpdateDto)
 	{
-		_subscribeService.Update(subscribe);
+		_subscribeService.Update(subscribeUpdateDto);
 		return Ok();
 	}
 }

@@ -1,0 +1,27 @@
+﻿@model List<SubscribeGetDto>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+	<tr>
+		<th>#</th>
+		<th>Email</th>
+		<th>Sil</th>
+		<th>Guncelle</th>
+		<th>Detaylar</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.SubscribeID</td>
+			<td>@item.Mail</td>
+			<td><a asp-controller="AdminSubscribes" asp-action="Delete" asp-route-id="@item.SubscribeID" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+			<td><a asp-controller="AdminSubscribes" asp-action="Update" asp-route-id="@item.SubscribeID" class="btn mb-1 btn-rounded btn-outline-success">Guncelle</a></td>
+			<td><a href="#" class="btn mb-1 btn-rounded btn-outline-dark">Detaylar</a></td>
+		</tr>
+	}
+</table>
+
+<a asp-controller="AdminSubscribes" asp-action="Add" class="btn mb-1 btn-rounded btn-outline-info">Yeni Abone Girisi</a>

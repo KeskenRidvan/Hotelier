@@ -1,12 +1,12 @@
-﻿using Hotelier.EntityLayer.Concretes;
+﻿using Hotelier.DtoLayer.Subscribes;
 
 namespace Hotelier.BusinessLayer.Abstracts;
 
 public interface ISubscribeService
 {
-	void Insert(Subscribe subscribe);
-	void Delete(Subscribe subscribe);
-	void Update(Subscribe subscribe);
-	List<Subscribe> GetList();
-	Subscribe GetById(int subscribeId);
+	void Insert(SubscribeAddDto subscribeAddDto);
+	void Delete(int subscribeId);
+	void Update(SubscribeUpdateDto subscribeUpdateDto);
+	List<SubscribeGetDto> GetList();
+	SubscribeGetDto GetById(int subscribeId);
 }

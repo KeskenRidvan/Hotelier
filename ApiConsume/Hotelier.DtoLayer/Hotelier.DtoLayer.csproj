@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Hotelier.EntityLayer\Hotelier.EntityLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Subscribes\" />
-  </ItemGroup>
-
 </Project>
