@@ -1,5 +1,5 @@
 ﻿using Hotelier.BusinessLayer.Abstracts;
-using Hotelier.EntityLayer.Concretes;
+using Hotelier.DtoLayer.Rooms;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotelier.WebApi.Controllers;
@@ -30,24 +30,25 @@ public class RoomsController : ControllerBase
 	}
 
 	[HttpPost]
-	public IActionResult Add([FromBody] Room room)
+	public IActionResult Add([FromBody] RoomAddDto roomAddDto)
 	{
-		_roomService.Insert(room);
+		_roomService.Insert(roomAddDto);
 		return Ok();
 	}
 
 	[HttpDelete("{id}")]
 	public IActionResult Delete([FromRoute] int id)
 	{
-		var response = _roomService.GetById(id);
-		_roomService.Delete(response);
+		_roomService.Delete(id);
 		return Ok();
 	}
 
 	[HttpPut("{id}")]
-	public IActionResult Update([FromRoute] int id, [FromBody] Room room)
+	public IActionResult Update(
+		[FromRoute] int id,
+		[FromBody] RoomUpdateDto roomUpdateDto)
 	{
-		_roomService.Update(room);
+		_roomService.Update(roomUpdateDto);
 		return Ok();
 	}
 }

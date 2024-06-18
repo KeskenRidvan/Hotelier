@@ -1,11 +1,11 @@
-﻿using Hotelier.EntityLayer.Concretes;
+﻿using Hotelier.DtoLayer.Rooms;
 
 namespace Hotelier.BusinessLayer.Abstracts;
 public interface IRoomService
 {
-	void Insert(Room room);
-	void Delete(Room room);
-	void Update(Room room);
-	List<Room> GetList();
-	Room GetById(int roomId);
+	void Insert(RoomAddDto roomAddDto);
+	void Delete(int roomId);
+	void Update(RoomUpdateDto roomUpdateDto);
+	List<RoomGetDto> GetList();
+	RoomGetDto GetById(int roomId);
 }

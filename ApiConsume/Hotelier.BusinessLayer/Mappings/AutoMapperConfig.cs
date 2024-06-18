@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Hotelier.DtoLayer.Rooms;
 using Hotelier.DtoLayer.Staffs;
 using Hotelier.DtoLayer.Testimonials;
 using Hotelier.EntityLayer.Concretes;
@@ -15,5 +16,9 @@ public class AutoMapperConfig : Profile
 		CreateMap<TestimonialGetDto, Testimonial>().ReverseMap();
 		CreateMap<TestimonialAddDto, Testimonial>().ReverseMap();
 		CreateMap<TestimonialUpdateDto, Testimonial>().ReverseMap();
+
+		CreateMap<RoomGetDto, Room>().ReverseMap();
+		CreateMap<RoomAddDto, Room>().ReverseMap();
+		CreateMap<RoomUpdateDto, Room>().ReverseMap();
 	}
 }
