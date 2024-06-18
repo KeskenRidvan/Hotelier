@@ -1,12 +1,12 @@
-﻿using Hotelier.EntityLayer.Concretes;
+﻿using Hotelier.DtoLayer.Services;
 
 namespace Hotelier.BusinessLayer.Abstracts;
 
 public interface IServiceService
 {
-	void Insert(Service service);
-	void Delete(Service service);
-	void Update(Service service);
-	List<Service> GetList();
-	Service GetById(int serviceId);
+	void Insert(ServiceAddDto serviceAddDto);
+	void Delete(int serviceId);
+	void Update(ServiceUpdateDto serviceUpdateDto);
+	List<ServiceGetDto> GetList();
+	ServiceGetDto GetById(int serviceId);
 }
