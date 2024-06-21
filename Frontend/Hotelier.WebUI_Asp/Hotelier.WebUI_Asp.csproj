@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ApiConsume\Hotelier.DataAccessLayer\Hotelier.DataAccessLayer.csproj" />
     <ProjectReference Include="..\..\ApiConsume\Hotelier.DtoLayer\Hotelier.DtoLayer.csproj" />
   </ItemGroup>
 
