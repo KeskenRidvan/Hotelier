@@ -33,5 +33,6 @@ public class AutoMapperConfig : Profile
         CreateMap<SubscribeUpdateDto, Subscribe>().ReverseMap();
 
         CreateMap<RegisterDto, AppUser>().ReverseMap();
+        CreateMap<LoginDto, AppUser>().ReverseMap();
     }
 }
