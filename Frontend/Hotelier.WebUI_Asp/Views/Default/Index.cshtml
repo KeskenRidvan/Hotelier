@@ -30,7 +30,7 @@
 
         @await Component.InvokeAsync("_TeamPartial")
 
-        @await Html.PartialAsync("_SubscribePartial")
+        @await Component.InvokeAsync("_SubscribePartial")
 
         @await Component.InvokeAsync("_FooterPartial")
 
@@ -39,8 +39,3 @@
     @await Component.InvokeAsync("_ScriptsPartial")
 </body>
 </html>
-
-InvalidOperationException: The view 'Index' was not found. The following locations were searched:
-/Views/Default/Index.cshtml
-/Views/Shared/Index.cshtml
-Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable<string> originalLocations)
