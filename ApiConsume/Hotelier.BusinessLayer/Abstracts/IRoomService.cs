@@ -3,9 +3,9 @@
 namespace Hotelier.BusinessLayer.Abstracts;
 public interface IRoomService
 {
-	void Insert(RoomAddDto roomAddDto);
-	void Delete(int roomId);
-	void Update(RoomUpdateDto roomUpdateDto);
-	List<RoomGetDto> GetList();
-	RoomGetDto GetById(int roomId);
+    void Insert(RoomAddDto roomAddDto);
+    void Delete(int roomId);
+    void Update(RoomUpdateDto roomUpdateDto);
+    List<RoomGetDto> GetList();
+    RoomGetDto GetById(int roomId);
 }

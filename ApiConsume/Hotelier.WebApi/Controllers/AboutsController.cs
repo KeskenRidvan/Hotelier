@@ -1,54 +1,54 @@
 ﻿using Hotelier.BusinessLayer.Abstracts;
-using Hotelier.DtoLayer.Rooms;
+using Hotelier.DtoLayer.Abouts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotelier.WebApi.Controllers;
 
-[Route("api/rooms")]
+[Route("api/abouts")]
 [ApiController]
-public class RoomsController : ControllerBase
+public class AboutsController : ControllerBase
 {
-    private readonly IRoomService _roomService;
+    private readonly IAboutService _aboutService;
 
-    public RoomsController(IRoomService roomService)
+    public AboutsController(IAboutService aboutService)
     {
-        _roomService = roomService;
+        _aboutService = aboutService;
     }
 
     [HttpGet("{id}")]
     public IActionResult Get([FromRoute] int id)
     {
-        var response = _roomService.GetById(id);
+        var response = _aboutService.GetById(id);
         return Ok(response);
     }
 
     [HttpGet]
     public IActionResult GetList()
     {
-        var response = _roomService.GetList();
+        var response = _aboutService.GetList();
         return Ok(response);
     }
 
     [HttpPost]
-    public IActionResult Add([FromBody] RoomAddDto roomAddDto)
+    public IActionResult Add([FromBody] AboutAddDto aboutAddDto)
     {
-        _roomService.Insert(roomAddDto);
+        _aboutService.Insert(aboutAddDto);
         return Ok();
     }
 
     [HttpDelete("{id}")]
     public IActionResult Delete([FromRoute] int id)
     {
-        _roomService.Delete(id);
+        _aboutService.Delete(id);
         return Ok();
     }
 
     [HttpPut("{id}")]
     public IActionResult Update(
         [FromRoute] int id,
-        [FromBody] RoomUpdateDto roomUpdateDto)
+        [FromBody] AboutUpdateDto aboutUpdateDto)
     {
-        _roomService.Update(roomUpdateDto);
+        _aboutService.Update(aboutUpdateDto);
         return Ok();
     }
 }

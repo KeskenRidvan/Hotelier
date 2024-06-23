@@ -3,9 +3,10 @@ using Hotelier.DataAccessLayer.Repositories.Abstracts;
 using Hotelier.EntityLayer.Concretes;
 
 namespace Hotelier.DataAccessLayer.Repositories.Concretes;
-public class RoomDal : Repository<Room>, IRoomDal
+
+public class SendMessageDal : Repository<SendMessage>, ISendMessageDal
 {
-    public RoomDal(BaseDbContext context) : base(context)
+    public SendMessageDal(BaseDbContext context) : base(context)
     {
     }
 }

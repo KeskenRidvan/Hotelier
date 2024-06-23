@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿namespace Hotelier.DtoLayer.AppUsers;
 
-namespace Hotelier.EntityLayer.Concretes;
-public class AppUser : IdentityUser<int>
+public class AppUserUpdateDto
 {
+    public int AppUserId { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
     public string City { get; set; }
@@ -11,5 +11,4 @@ public class AppUser : IdentityUser<int>
     public string Gender { get; set; }
     public string WorkDepartment { get; set; }
     public int WorkLocationID { get; set; }
-    public WorkLocation WorkLocation { get; set; }
 }

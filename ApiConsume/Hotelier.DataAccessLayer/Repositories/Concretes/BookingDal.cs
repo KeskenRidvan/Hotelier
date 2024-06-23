@@ -3,9 +3,10 @@ using Hotelier.DataAccessLayer.Repositories.Abstracts;
 using Hotelier.EntityLayer.Concretes;
 
 namespace Hotelier.DataAccessLayer.Repositories.Concretes;
-public class RoomDal : Repository<Room>, IRoomDal
+
+public class BookingDal : Repository<Booking>, IBookingDal
 {
-    public RoomDal(BaseDbContext context) : base(context)
+    public BookingDal(BaseDbContext context) : base(context)
     {
     }
 }

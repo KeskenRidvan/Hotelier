@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Hotelier.EntityLayer.Concretes;
-public class AppUser : IdentityUser<int>
+﻿namespace Hotelier.DtoLayer.AppUsers;
+public class AppUserAddDto
 {
     public string Name { get; set; }
     public string Surname { get; set; }
@@ -11,5 +9,4 @@ public class AppUser : IdentityUser<int>
     public string Gender { get; set; }
     public string WorkDepartment { get; set; }
     public int WorkLocationID { get; set; }
-    public WorkLocation WorkLocation { get; set; }
 }

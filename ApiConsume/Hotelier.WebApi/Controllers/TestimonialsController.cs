@@ -8,47 +8,47 @@ namespace Hotelier.WebApi.Controllers;
 [ApiController]
 public class TestimonialsController : Controller
 {
-	private readonly ITestimonialService _testimonialService;
+    private readonly ITestimonialService _testimonialService;
 
-	public TestimonialsController(ITestimonialService testimonialService)
-	{
-		_testimonialService = testimonialService;
-	}
+    public TestimonialsController(ITestimonialService testimonialService)
+    {
+        _testimonialService = testimonialService;
+    }
 
-	[HttpGet("{id}")]
-	public IActionResult Get([FromRoute] int id)
-	{
-		var response = _testimonialService.GetById(id);
-		return Ok(response);
-	}
+    [HttpGet("{id}")]
+    public IActionResult Get([FromRoute] int id)
+    {
+        var response = _testimonialService.GetById(id);
+        return Ok(response);
+    }
 
-	[HttpGet]
-	public IActionResult GetList()
-	{
-		var response = _testimonialService.GetList();
-		return Ok(response);
-	}
+    [HttpGet]
+    public IActionResult GetList()
+    {
+        var response = _testimonialService.GetList();
+        return Ok(response);
+    }
 
-	[HttpPost]
-	public IActionResult Add([FromBody] TestimonialAddDto testimonialAddDto)
-	{
-		_testimonialService.Insert(testimonialAddDto);
-		return Ok();
-	}
+    [HttpPost]
+    public IActionResult Add([FromBody] TestimonialAddDto testimonialAddDto)
+    {
+        _testimonialService.Insert(testimonialAddDto);
+        return Ok();
+    }
 
-	[HttpDelete("{id}")]
-	public IActionResult Delete([FromRoute] int id)
-	{
-		_testimonialService.Delete(id);
-		return Ok();
-	}
+    [HttpDelete("{id}")]
+    public IActionResult Delete([FromRoute] int id)
+    {
+        _testimonialService.Delete(id);
+        return Ok();
+    }
 
-	[HttpPut("{id}")]
-	public IActionResult Update(
-		[FromRoute] int id,
-		[FromBody] TestimonialUpdateDto testimonialUpdateDto)
-	{
-		_testimonialService.Update(testimonialUpdateDto);
-		return Ok();
-	}
+    [HttpPut("{id}")]
+    public IActionResult Update(
+        [FromRoute] int id,
+        [FromBody] TestimonialUpdateDto testimonialUpdateDto)
+    {
+        _testimonialService.Update(testimonialUpdateDto);
+        return Ok();
+    }
 }
