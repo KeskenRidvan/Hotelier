@@ -20,12 +20,12 @@ public class LoginController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Index(LoginDto loginDto)
+    public async Task<IActionResult> Index(LoginDto login)
     {
         var result =
                 await _signInManager.PasswordSignInAsync(
-                        loginDto.Username,
-                        loginDto.Password,
+                        login.Username,
+                        login.Password,
                         false,
                         false);
 

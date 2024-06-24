@@ -20,18 +20,18 @@ public class RegisterController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Index(RegisterDto registerDto)
+    public async Task<IActionResult> Index(RegisterDto register)
     {
         var appUser = new AppUser()
         {
-            Name = registerDto.Name,
-            Email = registerDto.Email,
-            Surname = registerDto.Surname,
-            UserName = registerDto.Username,
+            Name = register.Name,
+            Email = register.Email,
+            Surname = register.Surname,
+            UserName = register.Username,
         };
 
         var result =
-                await _userManager.CreateAsync(appUser, registerDto.Password);
+                await _userManager.CreateAsync(appUser, register.Password);
 
         if (result.Succeeded)
             return RedirectToAction("Index", "Login");

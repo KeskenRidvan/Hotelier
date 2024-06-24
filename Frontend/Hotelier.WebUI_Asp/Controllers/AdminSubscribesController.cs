@@ -33,10 +33,10 @@ public class AdminSubscribesController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add(SubscribeAddDto dto)
+    public async Task<IActionResult> Add(SubscribeAddDto subscribeAdd)
     {
         var client = _httpClientFactory.CreateClient();
-        var jsonData = JsonConvert.SerializeObject(dto);
+        var jsonData = JsonConvert.SerializeObject(subscribeAdd);
 
         StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
@@ -73,10 +73,10 @@ public class AdminSubscribesController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Update(int id, SubscribeUpdateDto dto)
+    public async Task<IActionResult> Update(int id, SubscribeUpdateDto subscribeUpdate)
     {
         var client = _httpClientFactory.CreateClient();
-        var jsonData = JsonConvert.SerializeObject(dto);
+        var jsonData = JsonConvert.SerializeObject(subscribeUpdate);
 
         StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 

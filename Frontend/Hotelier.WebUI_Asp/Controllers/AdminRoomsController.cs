@@ -7,84 +7,84 @@ using System.Text;
 namespace Hotelier.WebUI_Asp.Controllers;
 public class AdminRoomsController : Controller
 {
-	private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IHttpClientFactory _httpClientFactory;
 
-	public AdminRoomsController(IHttpClientFactory httpClientFactory)
-	{
-		_httpClientFactory = httpClientFactory;
-	}
+    public AdminRoomsController(IHttpClientFactory httpClientFactory)
+    {
+        _httpClientFactory = httpClientFactory;
+    }
 
-	public async Task<IActionResult> Index()
-	{
-		var client = _httpClientFactory.CreateClient();
-		var responseMessage = await client.GetAsync($"{Constants.BaseUrl}/rooms");
+    public async Task<IActionResult> Index()
+    {
+        var client = _httpClientFactory.CreateClient();
+        var responseMessage = await client.GetAsync($"{Constants.BaseUrl}/rooms");
 
-		if (!responseMessage.IsSuccessStatusCode)
-			return View();
+        if (!responseMessage.IsSuccessStatusCode)
+            return View();
 
-		var jsonData = await responseMessage.Content.ReadAsStringAsync();
-		var values = JsonConvert.DeserializeObject<List<RoomGetDto>>(jsonData);
-		return View(values);
-	}
+        var jsonData = await responseMessage.Content.ReadAsStringAsync();
+        var values = JsonConvert.DeserializeObject<List<RoomGetDto>>(jsonData);
+        return View(values);
+    }
 
-	public IActionResult Add()
-	{
-		return View();
-	}
+    public IActionResult Add()
+    {
+        return View();
+    }
 
-	[HttpPost]
-	public async Task<IActionResult> Add(RoomAddDto dto)
-	{
-		var client = _httpClientFactory.CreateClient();
-		var jsonData = JsonConvert.SerializeObject(dto);
+    [HttpPost]
+    public async Task<IActionResult> Add(RoomAddDto roomAdd)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var jsonData = JsonConvert.SerializeObject(roomAdd);
 
-		StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-		var responseMessage = await client.PostAsync($"{Constants.BaseUrl}/rooms", stringContent);
+        var responseMessage = await client.PostAsync($"{Constants.BaseUrl}/rooms", stringContent);
 
-		if (!responseMessage.IsSuccessStatusCode)
-			return View();
+        if (!responseMessage.IsSuccessStatusCode)
+            return View();
 
-		return RedirectToAction("Index");
-	}
+        return RedirectToAction("Index");
+    }
 
-	public async Task<IActionResult> Delete(int id)
-	{
-		var client = _httpClientFactory.CreateClient();
-		var responseMessage = await client.DeleteAsync($"{Constants.BaseUrl}/rooms/{id}");
+    public async Task<IActionResult> Delete(int id)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var responseMessage = await client.DeleteAsync($"{Constants.BaseUrl}/rooms/{id}");
 
-		if (!responseMessage.IsSuccessStatusCode)
-			return View();
+        if (!responseMessage.IsSuccessStatusCode)
+            return View();
 
-		return RedirectToAction("Index");
-	}
+        return RedirectToAction("Index");
+    }
 
-	public async Task<IActionResult> Update(int id)
-	{
-		var client = _httpClientFactory.CreateClient();
-		var responseMessage = await client.GetAsync($"{Constants.BaseUrl}/rooms/{id}");
+    public async Task<IActionResult> Update(int id)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var responseMessage = await client.GetAsync($"{Constants.BaseUrl}/rooms/{id}");
 
-		if (!responseMessage.IsSuccessStatusCode)
-			return View();
+        if (!responseMessage.IsSuccessStatusCode)
+            return View();
 
-		var jsonData = await responseMessage.Content.ReadAsStringAsync();
-		var values = JsonConvert.DeserializeObject<RoomUpdateDto>(jsonData);
-		return View(values);
-	}
+        var jsonData = await responseMessage.Content.ReadAsStringAsync();
+        var values = JsonConvert.DeserializeObject<RoomUpdateDto>(jsonData);
+        return View(values);
+    }
 
-	[HttpPost]
-	public async Task<IActionResult> Update(int id, RoomUpdateDto dto)
-	{
-		var client = _httpClientFactory.CreateClient();
-		var jsonData = JsonConvert.SerializeObject(dto);
+    [HttpPost]
+    public async Task<IActionResult> Update(int id, RoomUpdateDto roomUpdate)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var jsonData = JsonConvert.SerializeObject(roomUpdate);
 
-		StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-		var responseMessage = await client.PutAsync($"{Constants.BaseUrl}/rooms/{id}", stringContent);
+        var responseMessage = await client.PutAsync($"{Constants.BaseUrl}/rooms/{id}", stringContent);
 
-		if (!responseMessage.IsSuccessStatusCode)
-			return View();
+        if (!responseMessage.IsSuccessStatusCode)
+            return View();
 
-		return RedirectToAction("Index");
-	}
+        return RedirectToAction("Index");
+    }
 }
