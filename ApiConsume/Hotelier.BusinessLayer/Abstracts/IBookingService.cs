@@ -9,4 +9,5 @@ public interface IBookingService
     void Update(BookingUpdateDto bookingUpdateDto);
     List<BookingGetDto> GetList();
     BookingGetDto GetById(int bookingId);
+    void BookingUpdateStatus(BookingUpdateStatus bookingUpdateStatus);
 }

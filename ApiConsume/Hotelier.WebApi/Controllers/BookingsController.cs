@@ -51,4 +51,13 @@ public class BookingsController : ControllerBase
         _bookingService.Update(bookingUpdateDto);
         return Ok();
     }
+
+    [HttpPut("status/{id}")]
+    public IActionResult UpdateStatus(
+       [FromRoute] int id,
+       [FromBody] BookingUpdateStatus bookingUpdateStatus)
+    {
+        _bookingService.BookingUpdateStatus(bookingUpdateStatus);
+        return Ok();
+    }
 }

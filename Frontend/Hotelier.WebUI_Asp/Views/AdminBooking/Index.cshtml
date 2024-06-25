@@ -1,0 +1,48 @@
+﻿@model List<BookingGetDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Misafir</th>
+                <th>Giris Tarihi</th>
+                <th>Cikis Tarihi</th>
+                <th>Durum</th>
+                <th>Onayla</th>
+                <th>Iptal Et</th>
+                <th>Beklet</th>
+                <th>Guncelle</th>
+                <th>Detaylar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th>@count</th>
+                    <td>@item.Name</td>
+                    <td>@item.Checkin</td>
+                    <td>@item.CheckOut</td>
+                    <td>
+                        <span class="badge badge-primary px-2">@item.Status</span>
+                    </td>
+                    <td> <a asp-controller="AdminBooking" asp-action="ReservationStatusApproved" asp-route-id="@item.BookingID" class="btn btn-outline-success">Onayla</a> </td>
+                    <td> <a asp-controller="AdminBooking" asp-action="ReservationStatusCancelled" asp-route-id="@item.BookingID" class="btn btn-outline-danger">Iptal Et</a> </td>
+                    <td> <a asp-controller="AdminBooking" asp-action="ReservationStatusHold" asp-route-id="@item.BookingID" class="btn btn-outline-warning">Beklet</a> </td>
+                    <td> <a href="#" class="btn btn-outline-info">Guncelle</a> </td>
+                    <td> <a href="#" class="btn btn-outline-dark">Detaylar</a> </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

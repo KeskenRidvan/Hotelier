@@ -58,4 +58,14 @@ public class BookingManager : IBookingService
 
         _bookingDal.Update(booking);
     }
+
+    public void BookingUpdateStatus(BookingUpdateStatus bookingUpdateStatus)
+    {
+        var booking =
+                _bookingDal.GetById(bookingUpdateStatus.BookingID);
+
+        booking.Status = bookingUpdateStatus.Status;
+
+        _bookingDal.Update(booking);
+    }
 }
