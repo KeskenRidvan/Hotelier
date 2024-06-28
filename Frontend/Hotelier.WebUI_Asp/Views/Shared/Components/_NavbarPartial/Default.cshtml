@@ -36,9 +36,9 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a asp-controller="Default" asp-action="Index" class="nav-item nav-link active">Ana Sayfa</a>
+                        <a asp-controller="Default" asp-action="Index" class="nav-item nav-link">Ana Sayfa</a>
                         <a asp-controller="Booking" asp-action="Index" class="nav-item nav-link">Rezervasyon Yap</a>
-                        <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Iletisim</a>
+                        <a asp-controller="Contact" asp-action="SendMessage" class="nav-item nav-link">Iletisim</a>
                         <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Destek</a>
                         <a asp-controller="Login" asp-action="Index" class="nav-item nav-link">Giris Yap</a>
                     </div>
@@ -47,3 +47,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var links = document.querySelectorAll('.nav-link');
+
+        links.forEach(function (link) {
+            if (link.href === window.location.href) {
+                link.classList.add('active');
+                link.classList.add('fw-bold');
+            }
+        });
+
+        links.forEach(function (link) {
+            link.addEventListener('click', function () {
+                links.forEach(function (link) {
+                    link.classList.remove('active');
+                    link.classList.remove('fw-bold');
+                });
+                this.classList.add('active');
+                link.classList.add('fw-bold');
+            });
+        });
+    });
+</script>

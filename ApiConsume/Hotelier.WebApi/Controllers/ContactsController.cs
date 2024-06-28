@@ -32,6 +32,7 @@ public class ContactsController : ControllerBase
     [HttpPost]
     public IActionResult Add([FromBody] ContactAddDto contactAddDto)
     {
+        contactAddDto.Date = Convert.ToDateTime(DateTime.Now.ToString());
         _contactService.Insert(contactAddDto);
         return Ok();
     }
