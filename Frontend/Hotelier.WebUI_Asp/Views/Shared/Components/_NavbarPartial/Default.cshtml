@@ -1,7 +1,7 @@
 <div class="container-fluid bg-dark px-0">
     <div class="row gx-0">
         <div class="col-lg-3 bg-dark d-none d-lg-block">
-            <a href="/Default/Index/" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+            <a asp-controller="Default" asp-action="Index" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                 <h1 class="m-0 text-primary text-uppercase">Hotelier</h1>
             </a>
         </div>
@@ -38,9 +38,9 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a asp-controller="Default" asp-action="Index" class="nav-item nav-link active">Ana Sayfa</a>
                         <a asp-controller="Booking" asp-action="Index" class="nav-item nav-link">Rezervasyon Yap</a>
-                        <a href="/Contact/Index/" class="nav-item nav-link">Iletisim</a>
-                        <a href="contact.html" class="nav-item nav-link">Destek</a>
-                        <a href="/Login/Index/" class="nav-item nav-link">Giris Yap</a>
+                        <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Iletisim</a>
+                        <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Destek</a>
+                        <a asp-controller="Login" asp-action="Index" class="nav-item nav-link">Giris Yap</a>
                     </div>
                 </div>
             </nav>
