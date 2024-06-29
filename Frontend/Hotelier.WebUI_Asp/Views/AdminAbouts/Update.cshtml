@@ -1,0 +1,29 @@
+﻿@model AboutUpdateDto
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="AboutID" />
+    <label>Hakkimizda Baslik 1</label>
+    <input type="text" asp-for="Title1" class="form-control" />
+    <br />
+    <label>Hakkimizda Baslik 2</label>
+    <input type="text" asp-for="Title2" class="form-control" />
+    <br />
+    <label>Icerik</label>
+    <input type="text" asp-for="Content" class="form-control" />
+    <br />
+    <label>Personel Sayisi</label>
+    <input type="text" asp-for="StaffCount" class="form-control" />
+    <br />
+    <label>Oda Sayisi</label>
+    <input type="text" asp-for="RoomCount" class="form-control" />
+    <br />
+    <label>Musteri Sayisi</label>
+    <input type="text" asp-for="CustomerCount" class="form-control" />
+    <br />
+    <button class="btn btn-outline-success">Hakkimizda Bilgisini Guncelle</button>
+</form>

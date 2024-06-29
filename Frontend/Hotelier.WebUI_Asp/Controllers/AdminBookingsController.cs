@@ -5,11 +5,11 @@ using Newtonsoft.Json;
 using System.Text;
 
 namespace Hotelier.WebUI_Asp.Controllers;
-public class AdminBookingController : Controller
+public class AdminBookingsController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
 
-    public AdminBookingController(IHttpClientFactory httpClientFactory)
+    public AdminBookingsController(IHttpClientFactory httpClientFactory)
     {
         _httpClientFactory = httpClientFactory;
     }

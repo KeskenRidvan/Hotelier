@@ -1,0 +1,24 @@
+﻿@model List<AboutGetDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Baslik1</th>
+        <th>Baslik2</th>
+        <th>Guncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.AboutID</th>
+            <td>@item.Title1</td>
+            <td>@item.Title2</td>
+            <td><a asp-controller="AdminAbouts" asp-action="Update" asp-route-id="@item.AboutID" class="btn mb-1 btn-rounded btn-outline-success">Guncelle</a></td>
+        </tr>
+    }
+</table>

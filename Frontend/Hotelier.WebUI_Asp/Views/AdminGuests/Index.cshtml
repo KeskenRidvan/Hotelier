@@ -1,0 +1,31 @@
+﻿@model List<GuestGetDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Sehir</th>
+        <th>Sil</th>
+        <th>Guncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.Name</td>
+            <td>@item.Surname</td>
+            <td>@item.City</td>
+            <td><a asp-asp-controller="AdminGuests" asp-action="Delete" asp-route-id="@item.GuestID" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+            <td><a asp-asp-controller="AdminGuests" asp-action="Update" asp-route-id="@item.GuestID" class="btn mb-1 btn-rounded btn-outline-success">Guncelle</a></td>
+        </tr>
+    }
+</table>
+<a asp-asp-controller="AdminGuests" asp-action="Add" class="btn mb-1 btn-rounded btn-outline-info">Yeni Misafir Girisi</a>

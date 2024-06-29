@@ -35,9 +35,9 @@
                     <td>
                         <span class="badge badge-primary px-2">@item.Status</span>
                     </td>
-                    <td> <a asp-controller="AdminBooking" asp-action="ReservationStatusApproved" asp-route-id="@item.BookingID" class="btn btn-outline-success">Onayla</a> </td>
-                    <td> <a asp-controller="AdminBooking" asp-action="ReservationStatusCancelled" asp-route-id="@item.BookingID" class="btn btn-outline-danger">Iptal Et</a> </td>
-                    <td> <a asp-controller="AdminBooking" asp-action="ReservationStatusHold" asp-route-id="@item.BookingID" class="btn btn-outline-warning">Beklet</a> </td>
+                    <td> <a asp-controller="AdminBookings" asp-action="ReservationStatusApproved" asp-route-id="@item.BookingID" class="btn btn-outline-success">Onayla</a> </td>
+                    <td> <a asp-controller="AdminBookings" asp-action="ReservationStatusCancelled" asp-route-id="@item.BookingID" class="btn btn-outline-danger">Iptal Et</a> </td>
+                    <td> <a asp-controller="AdminBookings" asp-action="ReservationStatusHold" asp-route-id="@item.BookingID" class="btn btn-outline-warning">Beklet</a> </td>
                     <td> <a href="#" class="btn btn-outline-info">Guncelle</a> </td>
                     <td> <a href="#" class="btn btn-outline-dark">Detaylar</a> </td>
                 </tr>
