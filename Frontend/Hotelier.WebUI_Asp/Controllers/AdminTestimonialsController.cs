@@ -35,6 +35,9 @@ public class AdminTestimonialsController : Controller
     [HttpPost]
     public async Task<IActionResult> Add(TestimonialAddDto testimonialAdd)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(testimonialAdd);
 
@@ -75,6 +78,9 @@ public class AdminTestimonialsController : Controller
     [HttpPost]
     public async Task<IActionResult> Update(int id, TestimonialUpdateDto testimonialUpdate)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(testimonialUpdate);
 

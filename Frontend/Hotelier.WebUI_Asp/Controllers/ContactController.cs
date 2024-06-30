@@ -25,6 +25,9 @@ public class ContactController : Controller
     [HttpPost]
     public async Task<IActionResult> SendMessage(ContactAddDto contactAdd)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         contactAdd.Date = DateTime.Parse(DateTime.Now.ToString());
 
         var client = _httpClientFactory.CreateClient();

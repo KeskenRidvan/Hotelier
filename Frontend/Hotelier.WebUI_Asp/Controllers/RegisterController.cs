@@ -22,6 +22,9 @@ public class RegisterController : Controller
     [HttpPost]
     public async Task<IActionResult> Index(RegisterDto register)
     {
+        if (ModelState.IsValid)
+            return View();
+
         var appUser = new AppUser()
         {
             Name = register.Name,

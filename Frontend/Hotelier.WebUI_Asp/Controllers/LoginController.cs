@@ -22,6 +22,9 @@ public class LoginController : Controller
     [HttpPost]
     public async Task<IActionResult> Index(LoginDto login)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var result =
                 await _signInManager.PasswordSignInAsync(
                         login.Username,

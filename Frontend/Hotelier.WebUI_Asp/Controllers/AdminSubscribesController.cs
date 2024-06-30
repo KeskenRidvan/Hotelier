@@ -35,6 +35,9 @@ public class AdminSubscribesController : Controller
     [HttpPost]
     public async Task<IActionResult> Add(SubscribeAddDto subscribeAdd)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(subscribeAdd);
 
@@ -75,6 +78,9 @@ public class AdminSubscribesController : Controller
     [HttpPost]
     public async Task<IActionResult> Update(int id, SubscribeUpdateDto subscribeUpdate)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(subscribeUpdate);
 

@@ -26,6 +26,9 @@ public class BookingController : Controller
     [HttpPost]
     public async Task<IActionResult> Add(BookingAddDto bookingAdd)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         bookingAdd.Status = "Onay Bekliyor";
         bookingAdd.Description = bookingAdd.SpecialRequest;
 

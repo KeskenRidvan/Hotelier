@@ -35,6 +35,9 @@ public class AdminGuestsController : Controller
     [HttpPost]
     public async Task<IActionResult> Add(GuestAddDto guestAdd)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(guestAdd);
 
@@ -75,6 +78,9 @@ public class AdminGuestsController : Controller
     [HttpPost]
     public async Task<IActionResult> Update(int id, GuestUpdateDto guestUpdate)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(guestUpdate);
 

@@ -35,6 +35,9 @@ public class AdminServicesController : Controller
     [HttpPost]
     public async Task<IActionResult> Add(ServiceAddDto serviceAdd)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(serviceAdd);
 
@@ -75,6 +78,9 @@ public class AdminServicesController : Controller
     [HttpPost]
     public async Task<IActionResult> Update(int id, ServiceUpdateDto serviceUpdate)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(serviceUpdate);
 

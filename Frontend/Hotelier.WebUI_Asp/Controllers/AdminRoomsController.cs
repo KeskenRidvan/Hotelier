@@ -35,6 +35,9 @@ public class AdminRoomsController : Controller
     [HttpPost]
     public async Task<IActionResult> Add(RoomAddDto roomAdd)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(roomAdd);
 
@@ -75,6 +78,9 @@ public class AdminRoomsController : Controller
     [HttpPost]
     public async Task<IActionResult> Update(int id, RoomUpdateDto roomUpdate)
     {
+        if (!ModelState.IsValid)
+            return View();
+
         var client = _httpClientFactory.CreateClient();
         var jsonData = JsonConvert.SerializeObject(roomUpdate);
 
