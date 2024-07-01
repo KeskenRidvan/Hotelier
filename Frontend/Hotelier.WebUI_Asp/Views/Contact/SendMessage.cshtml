@@ -1,5 +1,4 @@
 ﻿@model ContactAddDto
-
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -47,12 +46,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    @Html.DropDownListFor(x => x.MessageCategoryID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
-                                    <label for="subject">Konuyu Seciniz</label>
-                                </div>
-                                <br />
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Kou Basliği" name="Subject">
+                                    <input type="text" class="form-control" id="subject" placeholder="Konu Basliği" name="Subject">
                                     <label for="subject">Konu Basliğini Yaziniz</label>
                                 </div>
                             </div>
@@ -63,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Mesaji Gönder</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit">Mesaji Gonder</button>
                             </div>
                         </div>
                     </form>

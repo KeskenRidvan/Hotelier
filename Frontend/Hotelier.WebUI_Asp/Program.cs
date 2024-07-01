@@ -7,6 +7,7 @@ using Hotelier.DtoLayer.Bookings;
 using Hotelier.DtoLayer.Contacts;
 using Hotelier.DtoLayer.Guests;
 using Hotelier.DtoLayer.Rooms;
+using Hotelier.DtoLayer.SendMessages;
 using Hotelier.DtoLayer.Services;
 using Hotelier.DtoLayer.Staffs;
 using Hotelier.DtoLayer.Subscribes;
@@ -18,6 +19,7 @@ using Hotelier.WebUI_Asp.ValidationRules.Bookings;
 using Hotelier.WebUI_Asp.ValidationRules.Contacts;
 using Hotelier.WebUI_Asp.ValidationRules.Guests;
 using Hotelier.WebUI_Asp.ValidationRules.Rooms;
+using Hotelier.WebUI_Asp.ValidationRules.SendMessages;
 using Hotelier.WebUI_Asp.ValidationRules.Services;
 using Hotelier.WebUI_Asp.ValidationRules.Staffs;
 using Hotelier.WebUI_Asp.ValidationRules.Subscribes;
@@ -39,7 +41,6 @@ public class Program
 
         builder.Services.AddTransient<IValidator<AppUserAddDto>, AppUserAddDtoValidator>();
         builder.Services.AddTransient<IValidator<AppUserUpdateDto>, AppUserUpdateDtoValidator>();
-
         builder.Services.AddTransient<IValidator<LoginDto>, LoginDtoValidator>();
         builder.Services.AddTransient<IValidator<RegisterDto>, RegisterDtoValidator>();
 
@@ -65,6 +66,8 @@ public class Program
         builder.Services.AddTransient<IValidator<TestimonialAddDto>, TestimonialAddDtoValidator>();
         builder.Services.AddTransient<IValidator<TestimonialUpdateDto>, TestimonialUpdateDtoValidator>();
 
+        builder.Services.AddTransient<IValidator<SendMessageAddDto>, SendMessageAddDtoValidator>();
+
         builder.Services.AddControllersWithViews().AddFluentValidation();
 
         builder.Services.AddDbContext<BaseDbContext>();
@@ -89,7 +92,7 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
+            pattern: "{controller=Default}/{action=Index}/{id?}");
 
         app.Run();
     }
