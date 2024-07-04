@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hotelier.WebUI_Asp.Controllers;
 
 [AllowAnonymous]
-public class DefaultController : Controller
+public class ErrorPageController : Controller
 {
-    public IActionResult Index()
+    public IActionResult Error404()
     {
         return View();
     }

@@ -1,10 +1,13 @@
 ﻿using Hotelier.DtoLayer.Bookings;
 using Hotelier.WebUI_Asp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace Hotelier.WebUI_Asp.Controllers;
+
+[AllowAnonymous]
 public class BookingController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
