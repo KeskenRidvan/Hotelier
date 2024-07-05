@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Hotelier.WebApi.Controllers;
+
 [Route("api/fileprocesses")]
 [ApiController]
 public class FileProcessesController : ControllerBase
 {
     [HttpPost]
-    public async Task<IActionResult> UploadFile([FromForm] IFormFile file)
+    public async Task<IActionResult> UploadFile([FromForm] FormFile file)
     {
         var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
         var path = Path.Combine(Directory.GetCurrentDirectory(), "files/" + fileName);

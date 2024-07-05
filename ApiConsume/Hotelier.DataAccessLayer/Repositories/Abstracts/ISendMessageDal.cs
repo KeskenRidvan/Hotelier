@@ -4,4 +4,5 @@ namespace Hotelier.DataAccessLayer.Repositories.Abstracts;
 
 public interface ISendMessageDal : IRepository<SendMessage>
 {
+    int GetSendMessageCount();
 }

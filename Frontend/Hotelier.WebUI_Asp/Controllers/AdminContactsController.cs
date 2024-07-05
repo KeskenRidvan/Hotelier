@@ -19,14 +19,20 @@ public class AdminContactsController : Controller
     [HttpGet]
     public async Task<IActionResult> Inbox()
     {
-        var client = _httpClientFactory.CreateClient();
-        var responseMessage = await client.GetAsync($"{Constants.BaseUrl}/contacts");
+        var contactClient = _httpClientFactory.CreateClient();
+        var responseMessage = await contactClient.GetAsync($"{Constants.BaseUrl}/contacts");
+
+        var sendMessageClient = _httpClientFactory.CreateClient();
+        var getSendMessageCount = await sendMessageClient.GetAsync($"{Constants.BaseUrl}/sendmessages/getsendmessagecount");
 
         if (!responseMessage.IsSuccessStatusCode)
             return View();
 
-        var jsonData = await responseMessage.Content.ReadAsStringAsync();
-        var values = JsonConvert.DeserializeObject<List<ContactGetDto>>(jsonData);
+        var contactJsonData = await responseMessage.Content.ReadAsStringAsync();
+        var sendMessageJsonData = await responseMessage.Content.ReadAsStringAsync();
+        var values = JsonConvert.DeserializeObject<List<ContactGetDto>>(contactJsonData);
+        ViewBag.contactCount = values is not null ? values.ToList().Count() : 0;
+        ViewBag.sendMessageCount = sendMessageJsonData;
         return View(values);
     }
 

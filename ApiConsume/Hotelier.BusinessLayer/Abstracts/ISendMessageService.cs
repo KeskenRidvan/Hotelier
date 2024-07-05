@@ -9,4 +9,5 @@ public interface ISendMessageService
     void Update(SendMessageUpdateDto sendMessageUpdateDto);
     List<SendMessageGetDto> GetList();
     SendMessageGetDto GetById(int sendMessageId);
+    int GetSendMessageCount();
 }

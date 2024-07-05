@@ -44,6 +44,11 @@ public class SendMessageManager : ISendMessageService
         return response;
     }
 
+    public int GetSendMessageCount()
+    {
+        return _sendMessageDal.GetSendMessageCount();
+    }
+
     public void Insert(SendMessageAddDto sendMessageAddDto)
     {
         SendMessage sendMessage =

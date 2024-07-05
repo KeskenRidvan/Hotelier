@@ -29,6 +29,12 @@ public class SendMessagesController : ControllerBase
         return Ok(response);
     }
 
+    [HttpGet("getsendmessagecount")]
+    public IActionResult GetSendMessageCount()
+    {
+        return Ok(_sendMessageService.GetSendMessageCount());
+    }
+
     [HttpPost]
     public IActionResult Add([FromBody] SendMessageAddDto sendMessageAddDto)
     {
