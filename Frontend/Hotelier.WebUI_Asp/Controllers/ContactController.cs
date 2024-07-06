@@ -1,7 +1,9 @@
 ﻿using Hotelier.DtoLayer.Contacts;
+using Hotelier.DtoLayer.MessageCategories;
 using Hotelier.WebUI_Asp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -15,10 +17,27 @@ public class ContactController : Controller
     {
         _httpClientFactory = httpClientFactory;
     }
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+
+        var client = _httpClientFactory.CreateClient();
+        var responseMessage = await client.GetAsync($"{Constants.BaseUrl}/messagecategories");
+
+        var jsonData = await responseMessage.Content.ReadAsStringAsync();
+        var values = JsonConvert.DeserializeObject<List<MessageCategoryGetDto>>(jsonData);
+
+        List<SelectListItem> values2 =
+            values.Select(x => new SelectListItem
+            {
+                Text = x.MessageCategoryName,
+                Value = x.MessageCategoryID.ToString()
+            }).ToList();
+
+        ViewBag.messageCategories = values2;
+
         return View();
     }
+
     [HttpGet]
     public PartialViewResult SendMessage()
     {

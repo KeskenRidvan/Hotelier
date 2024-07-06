@@ -1,4 +1,5 @@
 ﻿@model ContactAddDto
+
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -32,33 +33,46 @@
                 <div class="wow fadeInUp" data-wow-delay="0.2s">
                     <form method="post" asp-action="SendMessage" asp-controller="Contact">
                         <div class="row g-3">
+
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="name" placeholder="Adiniz Soyadiniz" name="Name">
                                     <label for="name">Adiniz Soyadiniz</label>
                                 </div>
                             </div>
+
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="email" class="form-control" id="email" placeholder="Mail Adresiniz" name="Mail">
                                     <label for="email">Mail Adresiniz</label>
                                 </div>
                             </div>
+                            <br />
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Konu Basliği" name="Subject">
-                                    <label for="subject">Konu Basliğini Yaziniz</label>
+                                    @Html.DropDownListFor(x => x.MessageCategoryID, (List<SelectListItem>)ViewBag.messageCategories, new { @class = "form-control" })
+                                    <label for="subject">Konuyu Seciniz</label>
                                 </div>
                             </div>
+                            <br />
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" placeholder="Kou Başligi" name="Subject">
+                                    <label for="subject">Konu Basligini Yaziniz</label>
+                                </div>
+                            </div>
+                            <br />
                             <div class="col-12">
                                 <div class="form-floating">
                                     <textarea class="form-control" placeholder="Mesajnizi Buraya Yazabilirsiniz" name="Message" id="message" style="height: 150px"></textarea>
                                     <label for="message">Mesajiniz</label>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Mesaji Gonder</button>
-                            </div>
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Mesaji Gonder</button>
                         </div>
                     </form>
                 </div>
