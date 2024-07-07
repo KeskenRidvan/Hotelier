@@ -11,6 +11,14 @@ public class AppUserDal : Repository<AppUser>, IAppUserDal
     {
     }
 
+    public int AppUserCount()
+    {
+        using (var context = new BaseDbContext())
+        {
+            return context.Users.Count();
+        }
+    }
+
     public List<AppUser> UserListWithWorkLocation()
     {
         using (var context = new BaseDbContext())

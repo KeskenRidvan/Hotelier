@@ -68,4 +68,20 @@ public class BookingManager : IBookingService
 
         _bookingDal.Update(booking);
     }
+
+    public int GetBookingCount()
+    {
+        return _bookingDal.GetBookingCount();
+    }
+
+    public List<BookingGetDto> Last6Bookings()
+    {
+        List<Booking> bookings =
+             _bookingDal.Last6Bookings();
+
+        List<BookingGetDto> response =
+            _mapper.Map<List<BookingGetDto>>(bookings);
+
+        return response;
+    }
 }

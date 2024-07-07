@@ -10,4 +10,5 @@ public interface IAppUserService
     List<AppUserGetDto> GetList();
     AppUserGetDto GetById(int appUserId);
     List<AppUserGetDto> UserListWithWorkLocation();
+    int AppUserCount();
 }

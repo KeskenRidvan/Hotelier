@@ -18,6 +18,11 @@ public class AppUserManager : IAppUserService
         _mapper = mapper;
     }
 
+    public int AppUserCount()
+    {
+        return _appUserDal.AppUserCount();
+    }
+
     public void Delete(int appUserId)
     {
         var deletedAppUser = _appUserDal.GetById(appUserId);

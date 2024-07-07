@@ -10,4 +10,6 @@ public interface IBookingService
     List<BookingGetDto> GetList();
     BookingGetDto GetById(int bookingId);
     void BookingUpdateStatus(BookingUpdateStatus bookingUpdateStatus);
+    int GetBookingCount();
+    List<BookingGetDto> Last6Bookings();
 }

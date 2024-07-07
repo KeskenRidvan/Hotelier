@@ -8,4 +8,5 @@ public interface IRoomService
     void Update(RoomUpdateDto roomUpdateDto);
     List<RoomGetDto> GetList();
     RoomGetDto GetById(int roomId);
+    int RoomCount();
 }

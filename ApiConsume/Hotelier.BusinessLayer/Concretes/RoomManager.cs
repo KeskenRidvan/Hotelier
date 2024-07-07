@@ -51,6 +51,11 @@ public class RoomManager : IRoomService
         _roomDal.Insert(room);
     }
 
+    public int RoomCount()
+    {
+        return _roomDal.RoomCount();
+    }
+
     public void Update(RoomUpdateDto roomUpdateDto)
     {
         Room room =
