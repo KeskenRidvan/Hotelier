@@ -1,0 +1,27 @@
+﻿@model List<WorkLocationGetDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Lokasyon Adi</th>
+        <th>Sehir</th>
+        <th>Sil</th>
+        <th>Guncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.WorkLocationID</td>
+            <td>@item.WorkLocationName</td>
+            <td>@item.WorkLocationCity</td>
+            <td><a asp-controller="AdminWorkLocations" asp-action="Delete" asp-route-id="@item.WorkLocationID" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+            <td><a asp-controller="AdminWorkLocations" asp-action="Update" asp-route-id="@item.WorkLocationID" class="btn mb-1 btn-rounded btn-outline-success">Guncelle</a></td>
+        </tr>
+    }
+</table>
+<a asp-controller="AdminWorkLocations" asp-action="Add" class="btn mb-1 btn-rounded btn-outline-info">Yeni Lokasyon Girisi</a>

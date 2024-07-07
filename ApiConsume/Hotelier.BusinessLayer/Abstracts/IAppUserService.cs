@@ -9,4 +9,5 @@ public interface IAppUserService
     void Update(AppUserUpdateDto appUserUpdateDto);
     List<AppUserGetDto> GetList();
     AppUserGetDto GetById(int appUserId);
+    List<AppUserGetDto> UserListWithWorkLocation();
 }

@@ -58,4 +58,15 @@ public class AppUserManager : IAppUserService
 
         _appUserDal.Update(appUser);
     }
+
+    public List<AppUserGetDto> UserListWithWorkLocation()
+    {
+        List<AppUser> appUsers =
+            _appUserDal.UserListWithWorkLocation();
+
+        List<AppUserGetDto> response =
+            _mapper.Map<List<AppUserGetDto>>(appUsers);
+
+        return response;
+    }
 }

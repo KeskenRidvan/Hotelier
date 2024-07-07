@@ -29,6 +29,13 @@ public class AppUsersController : ControllerBase
         return Ok(response);
     }
 
+    [HttpGet]
+    public IActionResult UserListWithWorkLocation()
+    {
+        var response = _appUserService.UserListWithWorkLocation();
+        return Ok(response);
+    }
+
     [HttpPost]
     public IActionResult Add([FromBody] AppUserAddDto appUserAddDto)
     {

@@ -34,6 +34,7 @@ public class RegisterController : Controller
             Email = register.Email,
             Surname = register.Surname,
             UserName = register.Username,
+            WorkLocationID = register.WorkLocationID
         };
 
         var result =
