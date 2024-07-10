@@ -1,0 +1,15 @@
+﻿@model Hotelier.WebUI_Asp.Models.Roles.AddRoleViewModel
+
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Rol Ekleme Sayfasi</h1>
+
+<form method="post">
+    <label>Rol Adi</label>
+    <input type="text" asp-for="RoleName" class="form-control" />
+    <br />
+    <button class="btn btn-primary">Rolu Ekle</button>
+</form>

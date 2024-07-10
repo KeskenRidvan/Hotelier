@@ -1,0 +1,25 @@
+﻿@model List<Hotelier.EntityLayer.Concretes.AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+<h1>Rol Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Rol Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td><a asp-controller="AdminRoles" asp-action="DeleteRole" asp-route-id="@item.Id" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+            <td><a asp-controller="AdminRoles" asp-action="UpdateRole" asp-route-id="@item.Id" class="btn mb-1 btn-rounded btn-outline-success">Guncelle</a></td>
+        </tr>
+    }
+</table>
+<a asp-controller="AdminRoles" asp-action="AddRole" class="btn mb-1 btn-rounded btn-outline-info">Yeni Rol Girisi</a>
