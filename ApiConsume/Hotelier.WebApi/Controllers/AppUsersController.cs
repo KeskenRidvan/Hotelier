@@ -22,14 +22,14 @@ public class AppUsersController : ControllerBase
         return Ok(response);
     }
 
-    [HttpGet]
+    [HttpGet("getlist")]
     public IActionResult GetList()
     {
         var response = _appUserService.GetList();
         return Ok(response);
     }
 
-    [HttpGet]
+    [HttpGet("userlistwithworklocation")]
     public IActionResult UserListWithWorkLocation()
     {
         var response = _appUserService.UserListWithWorkLocation();
